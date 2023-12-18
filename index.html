@@ -47,24 +47,62 @@
         padding-top: 20%;
         float: left;
         }
+ #navbar {
+  overflow: hidden;
+  background-color: #3f3f3f;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#navbar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
         
         </style> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Some random github profile</title>
 </head>
-<body style="background-color: #93dbf3;">
+<body style="background-color: #5ec37e;">
     <center>
-        <section>
-        <h1>My Profile</h1>
+        <h1 style="padding-top: 100px; padding-bottom: 10px;">My Profile</h1>
+            <div id="navbar" class="sticky">
         <a class="link" href="#profile" style="font-size: 2.3em;"> Profile </a> 
         <a class="link" href="#about" style="font-size: 2.3em;"> About Me </a> 
         <a class="link" href="#contact" style="font-size: 2.3em;"> Contact </a> 
         <a class="link" href="#counter" style="font-size: 2.3em;"> Counter </a> 
-    <br>
-    <br>
+        <a class="link" href="login.html" target="_blank" style="font-size: 2.3em;">login</a>
+        </div>
     <div class="div1" id="profile"  style=" padding-bottom: 50px;">
-        <h2>Profile</h2>
+        <h2><u>Profile</u></h2>
         <div class="container">
         <p><strong>Name: </strong>Valerian Pratama <br> <br>
             <strong>School: </strong>Binus School Serpong <br> <br>
@@ -74,11 +112,10 @@
             </div>
         </div>
     </div>
-    </section>
     <br>
     <section>
     <div id="about" class="div1" style=" padding-bottom: 50px;">
-        <h2>About Me</h2>
+        <h2><u>About Me</u></h2>
         <p style="padding-left: 150px; padding-right: 150px;"> I am a high school student in BINUS SCHOOL Serpong studying towards 
             IGCSEs. I have experience in data sorting for both club and personal activities using google spreadsheets (excel) and 
             Google docs.  I take my education seriously, and gain excellent scores in Mathematics, Business, and Geography. I have been 
@@ -95,11 +132,11 @@
     </section>
     <section>
     <div id="contact" class="div1">
-        <h2>GitHub Profile</h2>
+        <h2><u>GitHub Profile</u></h2>
         <p> <strong>Contact me at</strong> <br> <br>
-            https://github.com/Hal-81 <br>
-            Number: 12345678910 <br>
-            gmail: someone@gmail.com
+            <strong>GitHub:</strong><a href="Hal-81.github.io">Hal-81.github.io </a><br>
+            <strong>WA:</strong> 12345678910 <br>
+            <strong>Gmail:</strong> someone@gmail.com
         </p>
         <div class="container" style=" padding-bottom: 50px;">
             <div style="float: center;">
@@ -116,8 +153,8 @@
 <section>
     </div>
     <div id="counter" class="div1" style="padding-bottom: 50px;">
-        <h2>Counter</h2>
-        <p id="number">899</p>
+        <h2><u>Counter</u></h2>
+        <p id="number" style="border: 1px solid black; width: 100px ;">899</p>
         <button onClick="add()" type="button">add</button>
         <button onClick="lower()" type="button">lower</button>
     </div>

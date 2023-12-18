@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        div {
+            border: 1px, black;
+        }
+    </style>
+    <script src="welcome.html"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Data Display</title>
+</head>
+<body style="background-color: rgb(162, 222, 238);">
+    <center>
+        <br>
+        <br>
+    <div style="background-color: white; width: 400px; height: fit-content; padding-bottom: 50px; padding-top: 40px;">
+        <img src="GitHub-Logo.png" alt="img" style="width: 50%; height: 50%;">
+    <h1 style="padding-top: -100px;">GitHub Login</h1>
+    <form id="userForm">
+        <label for="name">Username:</label>
+        <input type="text" id="name" name="name" required>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+    <br>
+    <a href="index.html">back</a>
+    </div>
+</center>
+
+    <script>
+        function submitForm() {
+            var name = encodeURIComponent(document.getElementById("name").value);
+            window.location.href = "welcome.html?name=" + name;
+        }
+    </script>
+</body>
+</html>

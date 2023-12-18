@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <script src="login.html"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+        .img {
+        float: right;
+        padding-left: 100px;
+        }
+    </style>
+</head>
+<body style="background-color: rgb(254, 251, 188);">
+    <a href="login.html" style="font-size: 2em; float: right;">Log Out</a>
+    <center>
+        <br>
+        <br>
+        <br>
+    <div id="displaySection" style="margin-top: 20px; background-color: white; height: fit-content; width: fit-content; 
+             padding-bottom: 50px; padding-top: 10px; padding-left: 50px; padding-right: 50px;">
+                     <div class="container" style="border-bottom: 2px solid black;">
+                        <p style="font-size: 3em;"><strong>Login <br>
+                        Successful
+                        </strong></p>
+                        <div class="img">
+                            <img src="tick.png" height="150px" width="150px">
+                            </div>
+                        </div>
+        <p style="font-size: 3em; color: black;">Welcome back <span id="displayName" style="color: rgb(225, 162, 123);"></span></p>
+        <a href="login.html" style="font-size: 2em;">back</a>
+    </div>
+
+    </center>
+    <script>
+        const queryParams = new URLSearchParams(window.location.search);
+        document.getElementById("displayName").innerText = queryParams.get("name");
+    </script>
+</body>
+</html>

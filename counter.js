@@ -13,3 +13,7 @@ function lower() {
 function showNumber() {
     document.getElementById("number").innerHTML = number;
 }
+
+function handleInputChange() {
+    var username = document.getElementById("username").value;
+}
