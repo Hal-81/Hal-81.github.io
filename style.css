@@ -45,9 +45,16 @@ padding-left: 20px;
 padding-top: 20%;
 float: left;
 }
+
 #navbar {
 overflow: hidden;
 background-color: #3f3f3f;
+left: 0; /* Initial position */
+transition: left 0.5s ease 0.1s; /* Transition property with duration */
+}
+
+#navbar.closed {
+    left: -2500px; /* Slide to the left when closed */
 }
 
 #navbar a {
@@ -103,4 +110,11 @@ padding-top: 60px;
     text-align: center;
 }
 
-
+#toggleButton {
+    color: #fff;
+    font-size: 2.3em;
+    margin-right: 2px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
