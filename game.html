@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        canvas {
+            border: 1px solid #000;
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+    <title>Simple Game</title>
+</head>
+<body>
+    <canvas id="gameCanvas" width="1200" height="800"></canvas>
+
+    <script>
+        // Get the canvas and context
+        var canvas = document.getElementById("gameCanvas");
+        var ctx = canvas.getContext("2d");
+
+        // Ball properties
+        var yy = -5;
+        var xx = 3;
+        var ballRadius = 10;
+        var x = canvas.width / 2;
+        var y = canvas.height - 30;
+        var dx = 3;
+        var dy = -5;
+
+        // Paddle properties
+        var paddleHeight = 10;
+        var paddleWidth = 75;
+        var paddleX = (canvas.width - paddleWidth) / 2;
+
+        // Paddle controls
+        var rightPressed = false;
+        var leftPressed = false;
+
+        // Event listeners for paddle controls
+        document.addEventListener("keydown", keyDownHandler);
+        document.addEventListener("keyup", keyUpHandler);
+        document.addEventListener("keydown", pause);
+
+        function pause(e) {
+            if(e.key === "Escape" && dy !== 0 && dx !== 0) {
+                dx = 0;
+                dy = 0;
+            }
+            else if(e.key === "Escape" && dy == 0 && dx == 0){
+                dx = xx;
+                dy = yy;
+            }
+        }
+
+        function keyDownHandler(e) {
+            if (e.key === "d" || e.key === "A") {
+                rightPressed = true;
+            } else if (e.key === "a" || e.key === "A") {
+                leftPressed = true;
+            }
+        }
+
+        function keyUpHandler(e) {
+            if (e.key == "d" || e.key === "D") {
+                rightPressed = false;
+            } else if (e.key === "a" || e.key === "A") {
+                leftPressed = false;
+            }
+        }
+
+        // Draw the ball on the canvas
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+            ctx.fillStyle = "red";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        // Draw the paddle on the canvas
+        function drawPaddle() {
+            ctx.beginPath();
+            ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+            ctx.fillStyle = "blue";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        // Main draw function
+        function draw() {
+            // Clear the canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw the ball
+            drawBall();
+
+            // Draw the paddle
+            drawPaddle();
+
+            // Move the ball
+            x += dx;
+            y += dy;
+
+            // Bounce the ball off the walls
+            if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+                dx = -dx;
+                xx = dx;
+            }
+
+            if (y + dy < ballRadius) {
+                dy = -dy;
+                yy = dy;
+            } else if (y + dy > canvas.height - ballRadius) {
+                // Check if the ball hits the paddle
+                if (x > paddleX && x < paddleX + paddleWidth) {
+                    dy = -dy;
+                    yy = dy;
+                    
+                } else {
+                    dx = 0;
+                    dy = 0;
+                }
+            }
+
+            // Move the paddle
+            if (rightPressed && paddleX < canvas.width - paddleWidth) {
+                paddleX += 7;
+            } else if (leftPressed && paddleX > 0) {
+                paddleX -= 7;
+            }
+
+            // Request the next animation frame
+            requestAnimationFrame(draw);
+        }
+
+        // Start the game loop
+        draw();
+    </script>
+    <a href="index.html">back</a>
+</body>
+</html>

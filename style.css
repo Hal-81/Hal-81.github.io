@@ -55,7 +55,7 @@ float: left;
 display: block;
 color: #f2f2f2;
 text-align: center;
-padding: 14px 16px;
+padding: 10px 16px;
 text-decoration: none;
 font-size: 17px;
 }
@@ -103,25 +103,4 @@ padding-top: 60px;
     text-align: center;
 }
 
-/* Default styles for larger screens */
-body {
-    font-size: 16px;
-}
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Media query for smaller screens */
-@media (max-width: 767px) {
-    body {
-        font-size: 14px; /* Adjust the font size for smaller screens */
-    }
-
-    .container {
-        max-width: 100%; /* Make the container full width on smaller screens */
-    }
-
-    /* Add additional styling adjustments for smaller screens as needed */
-}
