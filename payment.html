@@ -27,7 +27,7 @@
     <div style="background-color: white; width: 700px; height: fit-content; padding-bottom: 50px; padding-top: 40px; font-size: 2em;">
         <div class="container" style="margin-bottom: 30px;">
         <div style="float: left; margin-right: 10px;">
-            <img src="duitku.png" style="height: 80px; width: 80px;">
+            <img src="images/duitku.png" style="height: 80px; width: 80px;">
         </div>
         <div style="float: left; margin-left: 10px; margin-right: 30px;">
             <h1>Payment</h1>
@@ -50,7 +50,13 @@
         </div>
         <input type="text" id="ip" placeholder="IP address" style="margin-bottom: 20px;"> <br>
 
-        <p style="margin: auto; font-size: 1.2em; margin-bottom: 20px; border-bottom: 1px solid black; width: fit-content;"><strong>cost: </strong>$21379123.1237</p>
+        <p id="totalAmount" style="
+        margin: auto; 
+        font-size: 1.2em; 
+        margin-bottom: 20px; 
+        border-bottom: 1px solid black; 
+        width: fit-content;
+        "><strong>cost: </strong>Rp 0</p>
 
         <button type="button" onclick="submitForm()" style="font-size: 1.05em; border-radius: 8px; border: 1.1px solid black; margin-top: 30px; background-color: white; width: 140px;">Pay</button>
     </form>
@@ -63,8 +69,16 @@
     <script>
         function submitForm() {
             var name = encodeURIComponent(document.getElementById("name").value);
-            window.location.href = "welcome.html?name=" + name;
+            window.location.href = "paySuccess.html?name=" + name;
         }
+        document.addEventListener('DOMContentLoaded', function () {
+    // Retrieve totalAmount from sessionStorage
+    var totalAmount = parseFloat(sessionStorage.getItem('totalAmount')) || 0;
+
+    // Display totalAmount on the page
+    var totalAmountElement = document.getElementById('totalAmount');
+    totalAmountElement.textContent = 'Total: Rp' + totalAmount.toFixed(2);
+});
     </script>
 </body>
 </html>
